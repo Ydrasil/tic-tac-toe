@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bfvcavregw06b"]
+
+[ext_resource type="Script" uid="uid://cqiknn5uvegd2" path="res://scenes/current_player/current_player.gd" id="1_bqmv1"]
+
+[node name="CurrentPlayer" type="Label" unique_id=1041119931]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -26.5
+offset_right = 26.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "to play"
+script = ExtResource("1_bqmv1")
