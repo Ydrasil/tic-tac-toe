@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b7trof7vu30xa"]
+
+[ext_resource type="Script" uid="uid://disfc3qc6pt66" path="res://scenes/score/score.gd" id="1_3auxm"]
+[ext_resource type="Script" uid="uid://dddhj4fe4l2pg" path="res://scenes/score/score_container.gd" id="1_27w82"]
+
+[node name="ScoreContainer" type="VBoxContainer" unique_id=604049754]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_27w82")
+
+[node name="Player" type="Label" parent="." unique_id=578935215]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "A"
+
+[node name="Score" type="Label" parent="." unique_id=1045543487]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0"
+script = ExtResource("1_3auxm")
