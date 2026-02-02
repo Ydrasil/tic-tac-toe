@@ -3,9 +3,13 @@ extends Node
 var state: GameState;
 
 func _ready() -> void:
-	Events.cell_pressed.connect(cell_pressed);
-	state = GameState.new();
+	if ResourceLoader.exists('user://GameState.tres'):
+		state = ResourceLoader.load('user://GameState.tres').duplicate(true);
+	else:
+		state = GameState.new();
 	new_game();
+	Events.cell_pressed.connect(cell_pressed);
+	Events.finished.connect(save);
 
 func current_player():
 	return state.current_player;
@@ -16,3 +20,6 @@ func cell_pressed(id: int):
 func new_game():
 	state.init();
 	Events.new_game.emit();
+
+func save(player):
+	ResourceSaver.save(state, 'user://GameState.tres');

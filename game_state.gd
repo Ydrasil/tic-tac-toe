@@ -15,6 +15,16 @@ var current_player = _current_player :
 	get:  return _current_player
 	set(val):  pass
 
+@export var _score_X: int = 0;
+var score_X = _score_X :
+	get:  return _score_X
+	set(val):  pass
+	
+@export var _score_O: int = 0;
+var score_O = _score_O :
+	get:  return _score_O
+	set(val):  pass
+
 func init():
 	_board = create_empty_board();
 	Events.current_player.emit(current_player);
@@ -51,6 +61,13 @@ func check_and_emit_if_finished():
 			winner = current_player;
 	
 	if winner != null:
+		match winner:
+			Player.X:
+				_score_X = score_X + 1;
+				Events.score_changed.emit(winner, score_X)
+			Player.O:
+				_score_O = score_O + 1;
+				Events.score_changed.emit(winner, score_O)
 		Events.finished.emit(winner);
 	else:
 		var is_draw = true;

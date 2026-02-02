@@ -1,13 +1,21 @@
 extends Label
 
-@export var score_player: int = 0;
-@export var player: GameState.Player;
+var player: GameState.Player:
+	set(value):
+		player = value
+		if is_inside_tree():
+			refresh()
 
 func _ready() -> void:
-	text = str(score_player);
-	Events.finished.connect(increment_score)
+	Events.score_changed.connect(current_score);
 
-func increment_score(winner: GameState.Player):
+func current_score(winner: GameState.Player, score: int):
 	if player == winner:
-		score_player = score_player + 1
-		text = str(score_player);
+		text = str(score);
+
+func refresh():
+	match player:
+		GameState.Player.X:
+			text = str(GameSession.state.score_X);
+		GameState.Player.O:
+			text = str(GameSession.state.score_O);
