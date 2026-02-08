@@ -87,3 +87,9 @@ func create_empty_board():
 		[Player.NONE, Player.NONE, Player.NONE],
 		[Player.NONE, Player.NONE, Player.NONE]
 	]
+
+func reset_score():
+	_score_X = 0;
+	Events.score_changed.emit(Player.X, score_X)
+	_score_O = 0;
+	Events.score_changed.emit(Player.O, score_O)

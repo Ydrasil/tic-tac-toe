@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cmpwt8w53wyuc"]
+
+[ext_resource type="Script" uid="uid://b4pdm38deovl8" path="res://scenes/reset_score/reset_score.gd" id="1_mxib8"]
+
+[node name="ResetScore" type="Button" unique_id=1130237084]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -97.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 8
+text = "Reset score"
+script = ExtResource("1_mxib8")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

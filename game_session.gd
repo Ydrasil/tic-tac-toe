@@ -10,6 +10,7 @@ func _ready() -> void:
 	new_game();
 	Events.cell_pressed.connect(cell_pressed);
 	Events.finished.connect(save);
+	Events.reset_score.connect(reset_score);
 
 func current_player():
 	return state.current_player;
@@ -21,5 +22,9 @@ func new_game():
 	state.init();
 	Events.new_game.emit();
 
-func save(player):
+func save(_player):
 	ResourceSaver.save(state, 'user://GameState.tres');
+
+func reset_score():
+	state.reset_score();
+	save(GameState.Player.NONE)
